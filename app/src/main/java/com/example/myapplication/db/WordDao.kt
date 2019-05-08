@@ -3,12 +3,13 @@ package com.example.myapplication.db
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
+import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.myapplication.model.Word
 
 @Dao
 interface WordDao {
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertWord(word: Word)
 
     @Query("DELETE from word_table")
